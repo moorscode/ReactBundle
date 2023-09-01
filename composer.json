@@ -13,28 +13,30 @@
     "autoload": {
         "psr-4": { "Limenius\\ReactBundle\\": "" }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/moorscode/ReactRenderer"
+        }
+    ],
     "require": {
-        "php": ">=5.5.0",
+        "php": ">=8.0",
         "symfony/config": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
         "symfony/http-kernel": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
         "symfony/dependency-injection": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
-        "limenius/react-renderer": "^5.0.0"
+        "limenius/react-renderer": "dev-extract-render-coupling"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^2.5",
-        "escapestudios/symfony2-coding-standard": "^2.9",
-        "wimg/php-compatibility": "^7.0"
+        "escapestudios/symfony2-coding-standard": "^3.0",
+        "wimg/php-compatibility": "^7.0",
+        "php-parallel-lint/php-parallel-lint": "^v1.3",
+        "dealerdirect/phpcodesniffer-composer-installer": "v1.0.0",
+        "phpcompatibility/php-compatibility": "^9.0"
     },
-    "scripts": {
-        "default-scripts": [
-            "rm -rf vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHPCompatibility; cp -rp vendor/wimg/php-compatibility vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHPCompatibility"
-        ],
-        "post-install-cmd": [
-            "@default-scripts"
-        ],
-        "post-update-cmd": [
-            "@default-scripts"
-        ]
-    },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
 }
