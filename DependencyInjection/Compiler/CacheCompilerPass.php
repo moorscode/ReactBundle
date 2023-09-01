@@ -10,8 +10,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class CacheCompilerPass implements CompilerPassInterface
 {
-    private $key;
-
     /**
      * Processes the build.
      *
@@ -24,10 +22,12 @@ class CacheCompilerPass implements CompilerPassInterface
         if (!$container->getParameter('limenius_react.cache_enabled')) {
             return;
         }
+
         $appCache = $container->findDefinition('cache.app');
         $key = $container->getParameter('limenius_react.cache_key');
-        $renderer = $container
-            ->getDefinition('limenius_react.phpexecjs_react_renderer')
+
+        $container
+            ->getDefinition('limenius_react.renderer')
             ->addMethodCall('setCache', [$appCache, $key]);
 
         $container

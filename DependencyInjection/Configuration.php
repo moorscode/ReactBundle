@@ -16,13 +16,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder('limenius_react');
-        if (method_exists($treeBuilder, 'getRootNode')) {
-            $rootNode = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $rootNode = $treeBuilder->root('limenius_react');
-        }
-        $rootNode
+        $treeBuilder->getRootNode()
             ->children()
                 ->enumNode('default_rendering')
                     ->values(array('server_side', 'client_side', 'both'))
@@ -36,10 +30,6 @@ class Configuration implements ConfigurationInterface
                         ->end()
                         ->booleanNode('trace')
                             ->defaultFalse()
-                        ->end()
-                        ->enumNode('mode')
-                            ->values(array('phpexecjs', 'external_server'))
-                            ->defaultValue('phpexecjs')
                         ->end()
                         ->scalarNode('server_bundle_path')
                             ->defaultNull()

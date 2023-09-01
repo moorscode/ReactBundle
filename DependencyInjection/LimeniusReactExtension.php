@@ -2,10 +2,10 @@
 
 namespace Limenius\ReactBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * This is the class that loads and manages your bundle configuration.
@@ -30,27 +30,18 @@ class LimeniusReactExtension extends Extension
         $loader->load('services.xml');
         $loader->load('twig.xml');
 
-        $serverSideEnabled = $config['default_rendering'];
-        if (in_array($serverSideEnabled, array('both', 'server_side'), true)) {
-            $serverSideMode = $config['serverside_rendering']['mode'];
-            if ($serverSideMode === 'external_server') {
-                if ($serverSocketPath = $config['serverside_rendering']['server_socket_path']) {
-                    $container
-                        ->getDefinition('limenius_react.external_react_renderer')
-                        ->addMethodCall('setServerSocketPath', array($serverSocketPath))
-                        ;
-                }
-                $renderer = $container->getDefinition('limenius_react.external_react_renderer');
-            } else {
-                if ($serverBundlePath = $config['serverside_rendering']['server_bundle_path']) {
-                    $container
-                        ->getDefinition('limenius_react.phpexecjs_react_renderer')
-                        ->addMethodCall('setServerBundlePath', array($serverBundlePath))
-                        ;
-                }
-                $renderer = $container->getDefinition('limenius_react.phpexecjs_react_renderer');
+        $defaultRendering = $config['default_rendering'];
+
+        if ('both' === $defaultRendering || 'server_side' === $defaultRendering) {
+            $renderer = $container->getDefinition('limenius_react.renderer');
+
+            if ($serverSocketPath = $config['serverside_rendering']['server_socket_path']) {
+                $renderer->addMethodCall('setServerSocketPath', array($serverSocketPath));
             }
-            $container->setDefinition('limenius_react.react_renderer', $renderer);
+
+            if ($serverBundlePath = $config['serverside_rendering']['server_bundle_path']) {
+                $renderer->addMethodCall('setServerBundlePath', array($serverBundlePath));
+            }
         }
 
         $cache = $config['serverside_rendering']['cache'];
