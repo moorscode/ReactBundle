@@ -33,14 +33,14 @@ class LimeniusReactExtension extends Extension
         $defaultRendering = $config['default_rendering'];
 
         if ('both' === $defaultRendering || 'server_side' === $defaultRendering) {
-            $renderer = $container->getDefinition('limenius_react.renderer');
+            $rendererFactory = $container->getDefinition('limenius_react.render_factory');
 
             if ($serverSocketPath = $config['serverside_rendering']['server_socket_path']) {
-                $renderer->addMethodCall('setServerSocketPath', array($serverSocketPath));
+                $rendererFactory->addMethodCall('setServerSocketPath', array($serverSocketPath));
             }
 
             if ($serverBundlePath = $config['serverside_rendering']['server_bundle_path']) {
-                $renderer->addMethodCall('setServerBundlePath', array($serverBundlePath));
+                $rendererFactory->addMethodCall('setServerBundlePath', array($serverBundlePath));
             }
         }
 

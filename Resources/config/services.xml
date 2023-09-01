@@ -6,11 +6,15 @@
 
     <parameters>
         <parameter key="limenius_react.context_provider.class">Limenius\ReactRenderer\Context\SymfonyContextProvider</parameter>
+        <parameter key="limenius_react.render_factory.class">Limenius\ReactRenderer\Factory\RendererFactory</parameter>
     </parameters>
 
     <services>
         <service id="limenius_react.context_provider" class="%limenius_react.context_provider.class%">
             <argument type="service" id="request_stack" />
+        </service>
+        <service id="limenius_react.render_factory" class="%limenius_react.render_factory.class%">
+            <argument type="tagged_iterator" tag="limenius_react.renderer"/>
         </service>
     </services>
 </container>
