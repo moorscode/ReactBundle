@@ -5,10 +5,20 @@ namespace Limenius\ReactBundle\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+/**
+ * The compiler pass to set the cache key.
+ */
 class CacheCompilerPass implements CompilerPassInterface
 {
     private $key;
 
+    /**
+     * Processes the build.
+     *
+     * @param ContainerBuilder $container
+     *
+     * @return void
+     */
     public function process(ContainerBuilder $container)
     {
         if (!$container->getParameter('limenius_react.cache_enabled')) {
