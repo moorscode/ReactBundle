@@ -10,10 +10,9 @@
     </parameters>
 
     <services>
-        <service id="limenius_react.context_provider" class="%limenius_react.context_provider.class%">
-            <argument type="service" id="request_stack" />
+        <service id="limenius_react.context_provider" class="%limenius_react.context_provider.class%" autowire="true">
         </service>
-        <service id="limenius_react.render_factory" class="%limenius_react.render_factory.class%">
+        <service id="limenius_react.render_factory" class="%limenius_react.render_factory.class%" autowire="true">
             <argument type="tagged_iterator" tag="limenius_react.renderer"/>
         </service>
     </services>
