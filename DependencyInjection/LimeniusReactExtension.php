@@ -23,6 +23,8 @@ class LimeniusReactExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('limenius_react.default_rendering', $config['default_rendering']);
+        $container->setParameter('limenius_react.twig_function_prefix', $config['twig_function_prefix'] || '');
+        $container->setParameter('limenius_react.dom_id_prefix', $config['dom_id_prefix'] || '');
         $container->setParameter('limenius_react.fail_loud', $config['serverside_rendering']['fail_loud']);
         $container->setParameter('limenius_react.trace', $config['serverside_rendering']['trace']);
 
