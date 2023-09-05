@@ -2,6 +2,7 @@
 
 namespace Limenius\ReactBundle\DependencyInjection;
 
+use Exception;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
@@ -16,6 +17,8 @@ class LimeniusReactExtension extends Extension
 {
     /**
      * {@inheritdoc}
+     *
+     * @throws Exception
      */
     public function load(array $configs, ContainerBuilder $container): void
     {

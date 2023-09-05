@@ -8,7 +8,7 @@
     <rule ref="Symfony"/>
     <rule ref="PHPCompatibility"/>
 
-    <config name="testVersion" value="5.5-8.2"/>
+    <config name="testVersion" value="8.2-"/>
 
     <rule ref="PEAR.Functions.ValidDefaultValue.NotAtEnd">
         <severity>0</severity>
