@@ -27,8 +27,6 @@ class LimeniusReactExtension extends Extension
         $container->setParameter('limenius_react.dom_id_prefix', $config['dom_id_prefix'] || '');
         $container->setParameter('limenius_react.fail_loud', $config['serverside_rendering']['fail_loud']);
         $container->setParameter('limenius_react.trace', $config['serverside_rendering']['trace']);
-        $container->setParameter('limenius_react.server_socket_path', $config['serverside_rendering']['server_socket_path']);
-        $container->setParameter('limenius_react.server_bundle_path', $config['serverside_rendering']['server_bundle_path']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
@@ -36,8 +34,5 @@ class LimeniusReactExtension extends Extension
 
         $cache = $config['serverside_rendering']['cache'];
         $container->setParameter('limenius_react.cache_enabled', $cache['enabled']);
-        if ($cache['enabled']) {
-            $container->setParameter('limenius_react.cache_key', $cache['key']);
-        }
     }
 }

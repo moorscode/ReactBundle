@@ -14,8 +14,6 @@
         </service>
         <service id="limenius_react.render_factory" class="%limenius_react.render_factory.class%" autowire="true">
             <argument type="tagged_iterator" tag="limenius_react.renderer"/>
-            <argument>%limenius_react.server_bundle_path%</argument>
-            <argument>%limenius_react.server_socket_path%</argument>
         </service>
     </services>
 </container>
