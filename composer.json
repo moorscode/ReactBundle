@@ -8,6 +8,10 @@
         {
             "name": "nacho",
             "email": "nacho@limenius.com"
+        },
+        {
+            "name": "Jip Moors",
+            "email": "jipmoors@myonlinestore.com"
         }
     ],
     "autoload": {
