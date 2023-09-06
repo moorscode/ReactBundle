@@ -3,6 +3,7 @@
 namespace Limenius\ReactBundle\DependencyInjection;
 
 use Exception;
+use Limenius\ReactRenderer\Twig\ComponentInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
@@ -25,7 +26,13 @@ class LimeniusReactExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('limenius_react.default_rendering', $config['default_rendering']);
+        $defaultRendering = match ($config['default_rendering']) {
+            'server_side' => ComponentInterface::SERVER_SIDE_RENDERING,
+            'client_side' => ComponentInterface::CLIENT_SIDE_RENDERING,
+            default => ComponentInterface::SERVER_AND_CLIENT_SIDE_RENDERING,
+        };
+
+        $container->setParameter('limenius_react.default_rendering', $defaultRendering);
         $container->setParameter('limenius_react.twig_function_prefix', $config['twig_function_prefix'] || '');
         $container->setParameter('limenius_react.dom_id_prefix', $config['dom_id_prefix'] || '');
         $container->setParameter('limenius_react.fail_loud', $config['serverside_rendering']['fail_loud']);
