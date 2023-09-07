@@ -1,3 +1,5 @@
+![Github Action checks](https://github.com/moorscode/ReactBundle/actions/workflows/checks.yaml/badge.svg?branch=use-own-fork)
+
 # ReactBundle
 
 ReactBundle integrates [ReactRenderer](https://github.com/Limenius/ReactRenderer) with Symfony. This lets you implement React.js client and server-side rendering in your Symfony projects, allowing the development of universal (isomorphic) applications.
@@ -12,19 +14,15 @@ Features include:
 * Error and debug management for server and client side code.
 * Simple integration with Webpack.
 
-[![Latest Stable Version](https://poser.pugx.org/limenius/react-bundle/v/stable)](https://packagist.org/packages/limenius/react-bundle)
-[![Latest Unstable Version](https://poser.pugx.org/limenius/react-bundle/v/unstable)](https://packagist.org/packages/limenius/react-bundle)
-[![License](https://poser.pugx.org/limenius/react-bundle/license)](https://packagist.org/packages/limenius/react-bundle)
-
 # Example
 
-For a complete example, with a sensible Webpack set up and a sample application to start with, check out [Symfony React Sandbox](https://github.com/Limenius/symfony-react-sandbox).
+For a complete example, with a sensible Webpack set up and a sample application to start with, check out [Symfony React Sandbox](https://github.com/moorscode/symfony-react-sandbox).
 
 # Documentation
 
 The documentation for this bundle is available in the `Resources/doc` directory of the bundle:
 
-* Read the [LimeniusReactBundle documentation](https://github.com/Limenius/ReactBundle/blob/master/Resources/doc/index.md)
+* Read the [documentation](./Resources/doc/index.md)
 
 # Installation
 
@@ -38,7 +36,8 @@ This bundle is under the MIT license. See the complete license in the bundle:
 
 # Credits
 
-ReactBundle is heavily inspired by the great [React On Rails](https://github.com/shakacode/react_on_rails), and uses its npm package to render React components.
+ReactBundle is heavily inspired by the great [React On Rails](https://github.com/shakacode/react_on_rails), and uses its npm package to render React components.<br>
+This project is heavily inspired by the Limenius ReactBundle project.
 
 The installation instructions have been adapted from [https://github.com/KnpLabs/KnpMenuBundle](https://github.com/KnpLabs/KnpMenuBundle). Because they were great.
 
