@@ -15,7 +15,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('myonlinestore_react');
+        $treeBuilder = new TreeBuilder('my_online_store_react');
         $treeBuilder->getRootNode()
             ->children()
                 ->enumNode('default_rendering')
