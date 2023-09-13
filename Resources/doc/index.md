@@ -225,7 +225,7 @@ __Todo: Update__
 
 namespace App\Renderer;
 
-use Limenius\ReactRenderer\Renderer\PhpExecJsReactRenderer;
+use MyOnlineStore\ReactRenderer\Renderer\PhpExecJsReactRenderer;
 use Symfony\Component\Asset\Packages;
 
 class CustomPhpExecJsReactRenderer extends PhpExecJsReactRenderer

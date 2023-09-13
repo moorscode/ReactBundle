@@ -3,7 +3,7 @@
 namespace MyOnlineStore\ReactBundle\DependencyInjection;
 
 use Exception;
-use Limenius\ReactRenderer\Twig\ComponentInterface;
+use MyOnlineStore\ReactRenderer\Twig\ComponentInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
