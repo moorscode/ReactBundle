@@ -5,15 +5,15 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="limenius_react.context_provider.class">Limenius\ReactRenderer\Context\SymfonyContextProvider</parameter>
-        <parameter key="limenius_react.render_factory.class">Limenius\ReactRenderer\Factory\RendererFactory</parameter>
+        <parameter key="myonlinestore_react.context_provider.class">MyOnlineStore\ReactRenderer\Context\SymfonyContextProvider</parameter>
+        <parameter key="myonlinestore_react.render_factory.class">MyOnlineStore\ReactRenderer\Factory\RendererFactory</parameter>
     </parameters>
 
     <services>
-        <service id="limenius_react.context_provider" class="%limenius_react.context_provider.class%" autowire="true">
+        <service id="myonlinestore_react.context_provider" class="%myonlinestore_react.context_provider.class%" autowire="true">
         </service>
-        <service id="limenius_react.render_factory" class="%limenius_react.render_factory.class%" autowire="true">
-            <argument type="tagged_iterator" tag="limenius_react.renderer"/>
+        <service id="myonlinestore_react.render_factory" class="%myonlinestore_react.render_factory.class%" autowire="true">
+            <argument type="tagged_iterator" tag="myonlinestore_react.renderer"/>
         </service>
     </services>
 </container>

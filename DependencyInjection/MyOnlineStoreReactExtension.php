@@ -1,6 +1,6 @@
 <?php
 
-namespace Limenius\ReactBundle\DependencyInjection;
+namespace MyOnlineStore\ReactBundle\DependencyInjection;
 
 use Exception;
 use Limenius\ReactRenderer\Twig\ComponentInterface;
@@ -14,7 +14,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
  *
  * @see http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class LimeniusReactExtension extends Extension
+class MyOnlineStoreReactExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -32,17 +32,17 @@ class LimeniusReactExtension extends Extension
             default => ComponentInterface::SERVER_AND_CLIENT_SIDE_RENDERING,
         };
 
-        $container->setParameter('limenius_react.default_rendering', $defaultRendering);
-        $container->setParameter('limenius_react.twig_function_prefix', $config['twig_function_prefix'] || '');
-        $container->setParameter('limenius_react.dom_id_prefix', $config['dom_id_prefix'] || '');
-        $container->setParameter('limenius_react.fail_loud', $config['serverside_rendering']['fail_loud']);
-        $container->setParameter('limenius_react.trace', $config['serverside_rendering']['trace']);
+        $container->setParameter('myonlinestore_react.default_rendering', $defaultRendering);
+        $container->setParameter('myonlinestore_react.twig_function_prefix', $config['twig_function_prefix'] || '');
+        $container->setParameter('myonlinestore_react.dom_id_prefix', $config['dom_id_prefix'] || '');
+        $container->setParameter('myonlinestore_react.fail_loud', $config['serverside_rendering']['fail_loud']);
+        $container->setParameter('myonlinestore_react.trace', $config['serverside_rendering']['trace']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
         $loader->load('twig.xml');
 
         $cache = $config['serverside_rendering']['cache'];
-        $container->setParameter('limenius_react.cache_enabled', $cache['enabled']);
+        $container->setParameter('myonlinestore_react.cache_enabled', $cache['enabled']);
     }
 }
