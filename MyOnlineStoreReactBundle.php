@@ -1,15 +1,15 @@
 <?php
 
-namespace Limenius\ReactBundle;
+namespace MyOnlineStore\ReactBundle;
 
-use Limenius\ReactBundle\DependencyInjection\Compiler\CacheCompilerPass;
+use MyOnlineStore\ReactBundle\DependencyInjection\Compiler\CacheCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * The React Bundle class.
  */
-class LimeniusReactBundle extends Bundle
+class MyOnlineStoreReactBundle extends Bundle
 {
     /**
      * Adds the cache compiler pass.
