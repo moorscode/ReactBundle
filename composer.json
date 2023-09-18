@@ -32,7 +32,7 @@
         "symfony/config": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
         "symfony/http-kernel": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
         "symfony/dependency-injection": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
-        "limenius/react-renderer": "dev-replace-limenius@dev"
+        "limenius/react-renderer": "dev-master@dev"
     },
     "require-dev": {
         "escapestudios/symfony2-coding-standard": "^3.0",
