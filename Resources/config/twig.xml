@@ -5,15 +5,17 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="limenius_react.render_extension.class">Limenius\ReactRenderer\Twig\ReactRenderExtension</parameter>
+        <parameter key="myonlinestore_react.render_extension.class">MyOnlineStore\ReactRenderer\Twig\ReactRenderExtension</parameter>
     </parameters>
 
     <services>
-        <service id="limenius_react.render_extension" class="%limenius_react.render_extension.class%">
-            <argument type="service" id="limenius_react.react_renderer" on-invalid="null"/>
-            <argument type="service" id="limenius_react.context_provider" />
-            <argument>%limenius_react.default_rendering%</argument>
-            <argument>%limenius_react.trace%</argument>
+        <service id="myonlinestore_react.render_extension" class="%myonlinestore_react.render_extension.class%" autowire="true">
+            <argument type="service" id="myonlinestore_react.render_factory" on-invalid="null" />
+            <argument type="service" id="myonlinestore_react.context_provider" />
+            <argument>%myonlinestore_react.default_rendering%</argument>
+            <argument>%myonlinestore_react.twig_function_prefix%</argument>
+            <argument>%myonlinestore_react.dom_id_prefix%</argument>
+            <argument>%myonlinestore_react.trace%</argument>
             <tag name="twig.extension" />
         </service>
     </services>

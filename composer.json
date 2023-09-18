@@ -1,5 +1,5 @@
 {
-    "name": "limenius/react-bundle",
+    "name": "myonlinestore/react-bundle",
     "description": "Client and Server-side react rendering in a Symfony Bundle",
     "type": "symfony-bundle",
     "keywords": ["react", "isomorphic"],
@@ -8,33 +8,41 @@
         {
             "name": "nacho",
             "email": "nacho@limenius.com"
+        },
+        {
+            "name": "Jip Moors",
+            "email": "jipmoors@myonlinestore.com"
         }
     ],
     "autoload": {
-        "psr-4": { "Limenius\\ReactBundle\\": "" }
+        "psr-4": { "MyOnlineStore\\ReactBundle\\": "" }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/moorscode/ReactRenderer"
+        }
+    ],
+    "scripts": {
+        "cs": "@php vendor/bin/phpcs -s",
+        "lint": "@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --show-deprecated --exclude vendor --exclude .git"
     },
     "require": {
-        "php": ">=5.5.0",
+        "php": "^8.2",
         "symfony/config": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
         "symfony/http-kernel": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
         "symfony/dependency-injection": "^2.7.0|^3.0.6|^4.0|^5.0|^6.0",
-        "limenius/react-renderer": "^5.0.0"
+        "limenius/react-renderer": "dev-master@dev"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^2.5",
-        "escapestudios/symfony2-coding-standard": "^2.9",
-        "wimg/php-compatibility": "^7.0"
+        "escapestudios/symfony2-coding-standard": "^3.0",
+        "php-parallel-lint/php-parallel-lint": "^v1.3",
+        "phpcompatibility/php-compatibility": "^9.0",
+        "dealerdirect/phpcodesniffer-composer-installer": "v1.0.0"
     },
-    "scripts": {
-        "default-scripts": [
-            "rm -rf vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHPCompatibility; cp -rp vendor/wimg/php-compatibility vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHPCompatibility"
-        ],
-        "post-install-cmd": [
-            "@default-scripts"
-        ],
-        "post-update-cmd": [
-            "@default-scripts"
-        ]
-    },
-    "minimum-stability": "dev"
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Limenius\ReactBundle\DependencyInjection;
+namespace MyOnlineStore\ReactBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -13,20 +13,20 @@ class Configuration implements ConfigurationInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('limenius_react');
-        if (method_exists($treeBuilder, 'getRootNode')) {
-            $rootNode = $treeBuilder->getRootNode();
-        } else {
-            // BC layer for symfony/config 4.1 and older
-            $rootNode = $treeBuilder->root('limenius_react');
-        }
-        $rootNode
+        $treeBuilder = new TreeBuilder('my_online_store_react');
+        $treeBuilder->getRootNode()
             ->children()
                 ->enumNode('default_rendering')
                     ->values(array('server_side', 'client_side', 'both'))
                     ->defaultValue('both')
+                ->end()
+                ->scalarNode('twig_function_prefix')
+                    ->defaultValue('')
+                ->end()
+                ->scalarNode('dom_id_prefix')
+                    ->defaultValue('mos_react')
                 ->end()
                 ->arrayNode('serverside_rendering')
                     ->addDefaultsIfNotSet()
@@ -37,24 +37,11 @@ class Configuration implements ConfigurationInterface
                         ->booleanNode('trace')
                             ->defaultFalse()
                         ->end()
-                        ->enumNode('mode')
-                            ->values(array('phpexecjs', 'external_server'))
-                            ->defaultValue('phpexecjs')
-                        ->end()
-                        ->scalarNode('server_bundle_path')
-                            ->defaultNull()
-                        ->end()
-                        ->scalarNode('server_socket_path')
-                            ->defaultNull()
-                        ->end()
                         ->arrayNode('cache')
                             ->addDefaultsIfNotSet()
                             ->children()
                                 ->booleanNode('enabled')
                                     ->defaultFalse()
-                                ->end()
-                                ->scalarNode('key')
-                                    ->defaultValue('app')
                                 ->end()
                             ->end()
                         ->end()
